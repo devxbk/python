@@ -8,25 +8,47 @@ def calculator(num1, num2, operator):
             result = num1 * num2
         case "/":
             if num2 == 0:
-                print("Cannot divided by zero!")
+                print("Cannot divide by zero!")
                 return
             result = num1 / num2
-        case _:
-            print("Invalid Operator!")
-            return
 
-    print(f"Result: {result}")
+    print(f"Result: {result:.2f}")
 
 
 while True:
-    num1 = int(input("Enter first number: "))
-    num2 = int(input("Enter second number: "))
-    operator = input("Enter operator (+, -, *, /): ")
+
+    while True:
+        try:
+            num1 = float(input("Enter first number: "))
+            break
+        except ValueError:
+            print("Please enter a valid first number!")
+
+    while True:
+        try:
+            num2 = float(input("Enter second number: "))
+            break
+        except ValueError:
+            print("Please enter a valid second number!")
+
+    while True:
+        operator = input("Enter operator (+, -, *, /): ")
+
+        if operator in ["+", "-", "*", "/"]:
+            break
+
+        print("Invalid operator! Please try again.")
 
     calculator(num1, num2, operator)
 
-    choice = input("Do you want to continue? (y/n): ").lower()
+    while True:
+        choice = input("Do you want to continue? (y/n): ").strip().lower()
 
-    if choice != "y":
+        if choice in ["y", "n"]:
+            break
+
+        print("Please enter 'y' or 'n'.")
+
+    if choice == "n":
         print("Goodbye!")
         break
