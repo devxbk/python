@@ -42,7 +42,7 @@ while True:
     calculator(num1, num2, operator)
 
     while True:
-        choice = input("Do you want to continue? (y/n): ").strip().lower()
+        choice = input("Do you want to continue? (y/n): ").lower()
 
         if choice in ["y", "n"]:
             break
