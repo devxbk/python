@@ -1,3 +1,9 @@
+"""
+Simple Calculator
+Performs addition, subtraction, multiplication, and division.
+"""
+
+
 def calculator(num1, num2, operator):
     match operator:
         case "+":
@@ -11,7 +17,7 @@ def calculator(num1, num2, operator):
                 return None
             return num1 / num2
         case _:
-            return None
+            return "Invalid"
 
 
 print("=" * 35)
@@ -20,7 +26,7 @@ print("=" * 35)
 
 while True:
 
-    # First number
+    # Get first number
     while True:
         try:
             num1 = float(input("Enter first number: "))
@@ -28,7 +34,7 @@ while True:
         except ValueError:
             print("Please enter a valid number!")
 
-    # Second number
+    # Get second number
     while True:
         try:
             num2 = float(input("Enter second number: "))
@@ -36,7 +42,7 @@ while True:
         except ValueError:
             print("Please enter a valid number!")
 
-    # Operator
+    # Get operator
     while True:
         operator = input("Enter operator (+, -, *, /): ")
 
@@ -51,10 +57,12 @@ while True:
     # Display result
     if result is None:
         print("Cannot divide by zero!")
+    elif result == "Invalid":
+        print("Invalid operation!")
     else:
         print(f"Result: {result:.2f}")
 
-    # Continue?
+    # Continue or exit
     while True:
         choice = input("Do you want to continue? (y/n): ").lower()
 
@@ -64,5 +72,5 @@ while True:
         print("Please enter 'y' or 'n'.")
 
     if choice == "n":
-        print("Thank you for using the calculator. Goodbye!")
+        print("Thank you for using the calculator!")
         break
