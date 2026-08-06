@@ -16,4 +16,4 @@ while guess_count < 3:
         print("Too high!")
 
 if guess != random_num:
-    print(f"Sorry! You have used all 3 attempts. The nunmber was {random_num}. ")
+    print(f"You have used all 3 attempts. The nunmber was {random_num}. ")
