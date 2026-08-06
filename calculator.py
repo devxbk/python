@@ -1,54 +1,68 @@
 def calculator(num1, num2, operator):
     match operator:
         case "+":
-            result = num1 + num2
+            return num1 + num2
         case "-":
-            result = num1 - num2
+            return num1 - num2
         case "*":
-            result = num1 * num2
+            return num1 * num2
         case "/":
             if num2 == 0:
-                print("Cannot divide by zero!")
-                return
-            result = num1 / num2
+                return None
+            return num1 / num2
+        case _:
+            return None
 
-    print(f"Result: {result:.2f}")
 
+print("=" * 35)
+print("      SIMPLE CALCULATOR")
+print("=" * 35)
 
 while True:
 
+    # First number
     while True:
         try:
             num1 = float(input("Enter first number: "))
             break
         except ValueError:
-            print("Please enter a valid first number!")
+            print("Please enter a valid number!")
 
+    # Second number
     while True:
         try:
             num2 = float(input("Enter second number: "))
             break
         except ValueError:
-            print("Please enter a valid second number!")
+            print("Please enter a valid number!")
 
+    # Operator
     while True:
         operator = input("Enter operator (+, -, *, /): ")
 
-        if operator in ["+", "-", "*", "/"]:
+        if operator in ("+", "-", "*", "/"):
             break
 
         print("Invalid operator! Please try again.")
 
-    calculator(num1, num2, operator)
+    # Perform calculation
+    result = calculator(num1, num2, operator)
 
+    # Display result
+    if result is None:
+        print("Cannot divide by zero!")
+    else:
+        print(f"Result: {result:.2f}")
+
+    # Continue?
     while True:
         choice = input("Do you want to continue? (y/n): ").lower()
 
-        if choice in ["y", "n"]:
+        if choice in ("y", "n"):
             break
 
         print("Please enter 'y' or 'n'.")
 
     if choice == "n":
-        print("Goodbye!")
+        print("Thank you for using the calculator. Goodbye!")
         break
