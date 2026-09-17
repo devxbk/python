@@ -1,7 +1,7 @@
 import random
 
 
-def password_genrator():
+def password_generator():
     try:
         length = int(input("Enter password length (8-15): "))
         if length < 8 or length > 15:
@@ -11,17 +11,9 @@ def password_genrator():
         print("Please enter a number.")
         return
 
-    all_chars = [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    lowercase = [
         "a",
         "b",
         "c",
@@ -48,6 +40,38 @@ def password_genrator():
         "x",
         "y",
         "z",
+    ]
+
+    uppercase = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+    ]
+
+    special_chars = [
         "!",
         "@",
         "#",
@@ -84,20 +108,22 @@ def password_genrator():
 
     choice = input(" Inclusion of special characters (y/n)? : ").lower()
 
+    if choice == "n":
+        chars = numbers + lowercase + uppercase
+    elif choice == "y":
+        chars = numbers + lowercase + uppercase + special_chars
+    else:
+        print("Invalid choice, Please enter 'y' or 'n' ")
+        return
+
     password = []
 
     for i in range(length):
-
-        if choice == "n":
-            chars = len(all_chars) - 32
-        else:
-            chars = len(all_chars)
-
-        rand_num = random.randint(0, (chars - 1))
-        rand_char = all_chars[rand_num]
+        rand_num = random.randint(0, (len(chars) - 1))
+        rand_char = chars[rand_num]
         password.append(rand_char)
 
     print(f"Your password is: {''.join(map(str, password))}")
 
 
-password_genrator()
+password_generator()
