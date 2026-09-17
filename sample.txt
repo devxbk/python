@@ -1,0 +1,3 @@
+Hello, my name is Bobby.
+I am learning Python programming.
+Python is fun and easy to learn.
